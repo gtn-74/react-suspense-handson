@@ -14,13 +14,25 @@ throwされたpromiseは、サスペンドがいつ終了すると見込まれ�
 Promiseが解決する　＝　ローディングの終了が表される
 */
 
-
 // ランダムで出力される値が.5より小さかったら、throw
 export const SometimeSuspend: React.FC = () => {
   if (Math.random() < 0.5) {
     throw sleep(1000);
   }
-  return <p>Hello,world</p>
+  return <p>Hello,world</p>;
 };
 
+interface Props {
+  name: string;
+}
+export const RenderingNotifier: React.FC<Props> = ({ name }) => {
+  console.log(`${name} is rendered`);
+  return null;
+};
 
+// TODO: 最後にやろう
+// export const SwitchButton: React.FC = () => {
+//   return <button>ボタンA</button>
+// };
+
+// <button>ボタンB</button>
