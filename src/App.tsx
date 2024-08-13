@@ -1,6 +1,13 @@
 import { Suspense, useState } from "react";
 import {
   AlwaysSuspend,
+  DataLoader,
+  DataLoaderA,
+  DataLoaderB,
+  DataLoaderC,
+  DataLoaderD,
+  HookDataLoader,
+  PrimitiveDataLoader,
   RefreshHistoryDataLoader,
   RenderingNotifier,
   SometimeSuspend,
@@ -15,27 +22,40 @@ function App() {
   return (
     <div className="text-center">
       <h1 className="text-2xl">React App!</h1>
-      {/* <RenderingNotifier name="outside-Suspense"/> */}
-      {/* <Suspense fallback={<p>loading...</p>}> */}
-      {/* <p>ここは表示される？</p> */}
-      {/* <AlwaysSuspend /> */}
-      {/* <SometimeSuspend /> */}
-      {/* <RenderingNotifier name="innerside-Suspense"/>
-        <button
-          className="border p-1"
-          onClick={() => setCount((c) => c + 1)}
-        >
+      <RenderingNotifier name="outside-Suspense" />
+      <Suspense fallback={<p>loading...</p>}>
+        <p>ここは表示される？</p>
+        <AlwaysSuspend />
+        <SometimeSuspend />
+        <RenderingNotifier name="innerside-Suspense" />
+        <button className="border p-1" onClick={() => setCount((c) => c + 1)}>
           {count}
-        </button> */}
-      {/* ボタンを押してStateを更新するたびSuspenseが走る */}
-      {/* </Suspense> */}
+        </button>
+        {/* ボタンを押してStateを更新するたびSuspenseが走る */}
+      </Suspense>
       {/* useStateの失敗例 */}
-      <Suspense fallback={<p>loadong...</p>}>
-        {/* <DataLoader/> suspendしたままという意味 */}
-        <SuccessDataLoader /> {/* suspendしたままという意味 */}
+      {/* <Suspense fallback={<p>loadong...</p>}> */}
+        {/* suspendしたままという意味 */}
+        {/* <DataLoader /> */}
+        {/* suspendしたままという意味 */}
+        {/* <SuccessDataLoader /> */}
+      {/* </Suspense> */}
+      {/* <Suspense fallback={<p>loadong...</p>}>
+        <RefreshHistoryDataLoader />
       </Suspense>
       <Suspense fallback={<p>loadong...</p>}>
-        <RefreshHistoryDataLoader />
+      <PrimitiveDataLoader/>
+      </Suspense>
+      <Suspense fallback={<p>loadong...</p>}>
+      <HookDataLoader/>
+      </Suspense> */}
+      <Suspense fallback={<p>loadong...</p>}>
+        <DataLoaderA />
+        <DataLoaderB />
+      </Suspense>
+      <Suspense fallback={<p>loadong...</p>}>
+        <DataLoaderC />
+        <DataLoaderD />
       </Suspense>
     </div>
   );
